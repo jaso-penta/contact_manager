@@ -98,7 +98,12 @@ def display_contacts():
 #region CUSTOMERS MODUL
 
 def display_customers():
-    print('display_customers() iz working!')
+    for customer in customers:
+        print(f"ID: {customer['id']}\n\tFIRMA: {customer['name']:>}\n\tVAT: {customer['vat_id']}")
+        for contact in contacts:    
+            if contact['id'] in customer['contacts']:
+                print(f'\n\tKONTAKT OSOBA: {contact["first_name"]} {contact["last_name"]}\n\tTEL. BROJ: {contact["phone"]}\n\tEMAIL: {contact["email"]}')
+        print('='*40)
 
 #endregion
 
@@ -112,10 +117,12 @@ def main():
         if menu_item == 0:
             return
         elif menu_item == 1:
+            print()
             display_customers()
             print()
             input('Za nastavak pritisnite tipku ENTER! ')
         elif menu_item == 2:
+            print()
             display_contacts()
             print()
             input('Za nastavak pritisnite tipku ENTER! ')
